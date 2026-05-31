@@ -1,0 +1,22 @@
+[
+  {"id": 1, "prompt": "Build a CRM with login, contacts, dashboard, role-based access, and premium plan with payments. Admins can see analytics."},
+  {"id": 2, "prompt": "Create a project tracking app with tasks, team members, deadlines, comments, and an admin reports page."},
+  {"id": 3, "prompt": "Generate a subscription service where users can sign up, view pricing tiers, pay for premium content, and manage their profile."},
+  {"id": 4, "prompt": "Build a marketplace backend with user accounts, product listings, cart checkout, order history, and seller dashboards."},
+  {"id": 5, "prompt": "Create a learning platform with student login, course catalog, progress dashboard, quizzes, and instructor analytics."},
+  {"id": 6, "prompt": "Generate an internal admin portal that lists users, manages access rights, shows system health metrics, and allows role promotions."},
+  {"id": 7, "prompt": "Build a reporting system with login, client contacts, sales dashboard, exportable reports, and admin-only analytics."},
+  {"id": 8, "prompt": "Create a SaaS onboarding app with signup, pricing plans, payment processing, user settings, and admin revenue analytics."},
+  {"id": 9, "prompt": "Generate a customer support portal with user accounts, ticket lists, contact details, status updates, and manager dashboards."},
+  {"id": 10, "prompt": "Build a CRM that includes login, customers, notes, a dashboard, role-based permissions, and premium plan gating."},
+  {"id": 11, "prompt": "Build a simple app."},
+  {"id": 12, "prompt": "I want a website with roles and some reports, but I don't care about the layout."},
+  {"id": 13, "prompt": "Add login and payment, but no dashboard and no analytics."},
+  {"id": 14, "prompt": "Create a system where admins can see sales and users can see nothing. Conflicting requirements."},
+  {"id": 15, "prompt": "Need a CRM with contacts and premium, but no mention of auth or DB."},
+  {"id": 16, "prompt": "Build a management tool that has a dashboard, custom entities, and an analytics view, but only for admins."},
+  {"id": 17, "prompt": "Create a mobile-first app with payments, team roles, and a contacts table."},
+  {"id": 18, "prompt": "Build a portal with login, customers, plans, payments, and a page for analytics metrics."},
+  {"id": 19, "prompt": "Give me a subscription CRM with admin pages, contact management, premium gating, and a billing flow."},
+  {"id": 20, "prompt": "I want an app that has reports, roles, and a dashboard. Do not include a payment module."}
+]

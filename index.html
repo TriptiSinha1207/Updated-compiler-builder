@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your App on Your Way | Home</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-title">
+        <span class="brand-icon" aria-hidden="true">🚀</span>
+        <h1>Your App on Your Way</h1>
+      </div>
+    </header>
+    <main class="welcome-panel">
+      <section class="hero-copy">
+        <h2>Compile instructions into a strict app config</h2>
+        <p>Enter your prompt and download the generated configuration.</p>
+      </section>
+      <section class="generator-panel">
+        <form id="prompt-form" class="prompt-form">
+          <textarea id="prompt-input" name="prompt" rows="4" placeholder="Build an app using natural language instructions..."></textarea>
+          <button type="submit" class="button">Compile Prompt</button>
+          <div class="form-status" id="prompt-status"></div>
+        </form>
+        <div id="generate-result" class="generate-result hidden"></div>
+      </section>
+    </main>
+  </div>
+  </div>
+</body>
+</html>

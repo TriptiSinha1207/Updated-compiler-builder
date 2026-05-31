@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.name }} | Your App on Your Way</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-title">
+        <span class="brand-icon" aria-hidden="true">🚀</span>
+        <h1>Your App on Your Way</h1>
+      </div>
+    </header>
+    <nav class="site-nav">
+      <a href="/">Compiler</a>
+    </nav>
+    <main class="page-content">
+      <section class="page-intro">
+        <h2>{{ page.name }}</h2>
+      </section>
+      {% for comp in page.components %}
+        <section class="component component-{{ comp.type }}" id="section-{{ comp.id }}">
+          {% if comp.type == 'text' %}
+            <div class="component-text">{{ comp.props.text }}</div>
+          {% elif comp.type == 'panel' %}
+            <div class="component-panel">
+              <h3>{{ comp.props.title or comp.id }}</h3>
+              {% if comp.props.subtitle %}<p>{{ comp.props.subtitle }}</p>{% endif %}
+            </div>
+          {% elif comp.type == 'table' %}
+            <div class="component-table">
+              <h3>{{ comp.props.title or 'Data table' }}</h3>
+              <div class="table-output" data-endpoint="{{ comp.data_source }}" id="table-{{ comp.id }}">Loading...</div>
+            </div>
+          {% elif comp.type == 'form' %}
+            <div class="component-form">
+              <h3>{{ comp.props.title or 'Form' }}</h3>
+              <form id="{{ comp.id }}" class="ui-form" data-action="{{ comp.props.action }}">
+                {% for field in comp.props.fields or [] %}
+                  <label for="{{ comp.id }}-{{ field }}">{{ field.replace('_', ' ').capitalize() }}</label>
+                  <input id="{{ comp.id }}-{{ field }}" name="{{ field }}" type="text" placeholder="{{ field }}">
+                {% endfor %}
+                <button type="submit">Submit</button>
+                <div class="form-status" id="status-{{ comp.id }}"></div>
+              </form>
+            </div>
+          {% else %}
+            <pre>{{ comp.model_dump(mode='json') | tojson(indent=2) }}</pre>
+          {% endif %}
+        </section>
+      {% endfor %}
+    </main>
+  </div>
+  <script>
+    window.pageConfig = {{ page.model_dump(mode='json') | tojson() }};
+  </script>
+</body>
+</html>

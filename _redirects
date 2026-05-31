@@ -1,0 +1,3 @@
+/api/*  https://YOUR_BACKEND_URL/:splat  200
+/stream-generate  https://YOUR_BACKEND_URL/stream-generate  200
+/*    /index.html   200

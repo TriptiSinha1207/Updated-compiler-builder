@@ -1,0 +1,129 @@
+{
+  "stages": {
+    "intent_extraction": {
+      "primary_model": "gpt-4o-mini",
+      "fallback_model": "mistral-7b",
+      "override_env": "INTENT_EXTRACTION_MODEL",
+      "cost_threshold": 0.001,
+      "latency_threshold_ms": 300
+    },
+    "schema_generation": {
+      "primary_model": "gpt-4o",
+      "fallback_model": "claude-sonnet",
+      "override_env": "SCHEMA_GENERATION_MODEL",
+      "cost_threshold": 0.02,
+      "latency_threshold_ms": 900
+    },
+    "appspec_generation": {
+      "primary_model": "gemini-1.5-pro",
+      "fallback_model": "deepseek-v2",
+      "override_env": "APPSPEC_GENERATION_MODEL",
+      "cost_threshold": 0.02,
+      "latency_threshold_ms": 900
+    },
+    "repair": {
+      "primary_model": "gpt-4o",
+      "fallback_model": "openrouter-gpt-4o",
+      "override_env": "REPAIR_MODEL",
+      "cost_threshold": 0.02,
+      "latency_threshold_ms": 900
+    }
+  },
+  "models": {
+    "gpt-4o": {
+      "provider": "openai",
+      "model_name": "gpt-4o",
+      "openrouter_equivalent": "gpt-4o"
+    },
+    "gpt-4o-mini": {
+      "provider": "openai",
+      "model_name": "gpt-4o-mini",
+      "openrouter_equivalent": "gpt-4o-mini"
+    },
+    "claude-sonnet": {
+      "provider": "anthropic",
+      "model_name": "claude-sonnet",
+      "openrouter_equivalent": "claude-sonnet"
+    },
+    "claude-haiku": {
+      "provider": "anthropic",
+      "model_name": "claude-haiku",
+      "openrouter_equivalent": "claude-haiku"
+    },
+    "llama-3": {
+      "provider": "groq",
+      "model_name": "llama-3",
+      "openrouter_equivalent": "llama-3"
+    },
+    "mixtral": {
+      "provider": "groq",
+      "model_name": "mixtral",
+      "openrouter_equivalent": "mixtral"
+    },
+    "gemini-1.5-flash": {
+      "provider": "google_gemini",
+      "model_name": "gemini-1.5-flash",
+      "openrouter_equivalent": "gemini-1.5-flash"
+    },
+    "gemini-1.5-pro": {
+      "provider": "google_gemini",
+      "model_name": "gemini-1.5-pro",
+      "openrouter_equivalent": "gemini-1.5-pro"
+    },
+    "google-ai": {
+      "provider": "google_ai",
+      "model_name": "google-ai",
+      "openrouter_equivalent": "google-ai"
+    },
+    "deepseek-v2": {
+      "provider": "deepseek",
+      "model_name": "deepseek-v2",
+      "openrouter_equivalent": "deepseek-v2"
+    },
+    "deepseek-coder": {
+      "provider": "deepseek",
+      "model_name": "deepseek-coder",
+      "openrouter_equivalent": "deepseek-coder"
+    },
+    "mistral-large": {
+      "provider": "mistral",
+      "model_name": "mistral-large",
+      "openrouter_equivalent": "mistral-large"
+    },
+    "mistral-7b": {
+      "provider": "mistral",
+      "model_name": "mistral-7b",
+      "openrouter_equivalent": "mistral-7b"
+    },
+    "openrouter-gpt-4o": {
+      "provider": "openrouter",
+      "model_name": "gpt-4o"
+    }
+  },
+  "provider_keys": {
+    "openai": "OPENAI_API_KEY",
+    "anthropic": "ANTHROPIC_API_KEY",
+    "groq": "GROQ_API_KEY",
+    "google_gemini": "GEMINI_API_KEY",
+    "google_ai": "GOOGLE_AI_API_KEY",
+    "deepseek": "DEEPSEEK_API_KEY",
+    "openrouter": "OPENROUTER_API_KEY",
+    "mistral": "MISTRAL_API_KEY"
+  },
+  "cost_table": {
+    "gpt-4o": 0.03,
+    "gpt-4o-mini": 0.001,
+    "claude-sonnet": 0.028,
+    "claude-haiku": 0.0012,
+    "llama-3": 0.0008,
+    "mixtral": 0.0007,
+    "gemini-1.5-flash": 0.0012,
+    "gemini-1.5-pro": 0.025,
+    "google-ai": 0.020,
+    "deepseek-v2": 0.022,
+    "deepseek-coder": 0.020,
+    "mistral-large": 0.009,
+    "mistral-7b": 0.001,
+    "openrouter-gpt-4o": 0.025
+  }
+}

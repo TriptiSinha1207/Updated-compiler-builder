@@ -1,0 +1,14 @@
+[
+  {"id": 1, "type": "standard", "prompt": "Build a CRM for a real estate agency. Agents manage leads, properties, and deals. Admin sees analytics. WhatsApp notifications when a deal closes."},
+  {"id": 2, "type": "standard", "prompt": "Task manager for an engineering team. Tasks have due dates, assignees, priorities, and status. Team lead gets a Slack message when a task is overdue."},
+  {"id": 3, "type": "standard", "prompt": "Inventory system for a warehouse. Products, stock movements, suppliers. Low stock triggers an email alert."},
+  {"id": 4, "type": "standard", "prompt": "HR tool for a 50-person company. Track employees, leave requests, and performance reviews. Notify manager on Slack when leave is approved."},
+  {"id": 5, "type": "standard", "prompt": "E-commerce backend. Products, orders, customers, payments via Stripe. Order confirmation sent via Gmail."},
+  {"id": 6, "type": "standard", "prompt": "Event management platform. Organizers create events, attendees register, QR check-in at the door. Confirmation via WhatsApp."},
+  {"id": 7, "type": "standard", "prompt": "Project tracker. Projects, milestones, tasks. Sync tasks to Jira. Update a Google Sheet with weekly progress."},
+  {"id": 8, "type": "edge", "prompt": "An app."},
+  {"id": 9, "type": "edge", "prompt": "Build something like Notion for doctors."},
+  {"id": 10, "type": "edge", "prompt": "A platform with login, payments, roles, real-time chat, file uploads, native mobile, analytics, and a marketplace."},
+  {"id": 11, "type": "edge", "prompt": "A CRM but also a project manager but also an invoicing tool."},
+  {"id": 12, "type": "edge", "prompt": "Task manager, but make it smart."}
+]

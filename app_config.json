@@ -1,0 +1,856 @@
+{
+  "metadata": {
+    "app_name": "CRM Builder",
+    "description": "Generated CRM application for prompt: Build a CRM with login, contacts, dashboard, role-based access, and premium plan with payments. Admins can see analytics.",
+    "version": "0.1.0",
+    "assumptions": []
+  },
+  "ui": {
+    "pages": [
+      {
+        "name": "Home",
+        "path": "/",
+        "layout": "default",
+        "components": [
+          {
+            "id": "home-welcome",
+            "type": "text",
+            "props": {
+              "text": "Welcome to CRM"
+            },
+            "data_source": null
+          }
+        ]
+      },
+      {
+        "name": "Login",
+        "path": "/login",
+        "layout": "default",
+        "components": [
+          {
+            "id": "login-form",
+            "type": "form",
+            "props": {
+              "action": "/auth/login",
+              "fields": [
+                "email",
+                "password"
+              ]
+            },
+            "data_source": null
+          }
+        ]
+      },
+      {
+        "name": "Analytics",
+        "path": "/analytics",
+        "layout": "default",
+        "components": [
+          {
+            "id": "analytics-panel",
+            "type": "panel",
+            "props": {
+              "title": "Analytics"
+            },
+            "data_source": null
+          },
+          {
+            "id": "analytics-list-analytics",
+            "type": "table",
+            "props": {
+              "endpoint": "/analytics"
+            },
+            "data_source": "/analytics"
+          },
+          {
+            "id": "analytics-create-analytics",
+            "type": "table",
+            "props": {
+              "endpoint": "/analytics"
+            },
+            "data_source": "/analytics"
+          }
+        ]
+      },
+      {
+        "name": "Contacts",
+        "path": "/contacts",
+        "layout": "default",
+        "components": [
+          {
+            "id": "contacts-panel",
+            "type": "panel",
+            "props": {
+              "title": "Contacts"
+            },
+            "data_source": null
+          },
+          {
+            "id": "contacts-list-contact",
+            "type": "table",
+            "props": {
+              "endpoint": "/contacts"
+            },
+            "data_source": "/contacts"
+          },
+          {
+            "id": "contacts-create-contact",
+            "type": "table",
+            "props": {
+              "endpoint": "/contacts"
+            },
+            "data_source": "/contacts"
+          }
+        ]
+      },
+      {
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "layout": "default",
+        "components": [
+          {
+            "id": "dashboard-panel",
+            "type": "panel",
+            "props": {
+              "title": "Dashboard"
+            },
+            "data_source": null
+          }
+        ]
+      }
+    ]
+  },
+  "api": {
+    "endpoints": [
+      {
+        "name": "List Analytics",
+        "path": "/analytics",
+        "method": "GET",
+        "description": "List all analyticss.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "items",
+              "type": "array",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "analytics"
+      },
+      {
+        "name": "Create Analytics",
+        "path": "/analytics",
+        "method": "POST",
+        "description": "Create a new analytics.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "analytics"
+      },
+      {
+        "name": "Get Analytics",
+        "path": "/analytics/<id>",
+        "method": "GET",
+        "description": "Retrieve a single analytics by id.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "item",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "analytics"
+      },
+      {
+        "name": "List Contact",
+        "path": "/contacts",
+        "method": "GET",
+        "description": "List all contacts.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "items",
+              "type": "array",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "contact"
+      },
+      {
+        "name": "Create Contact",
+        "path": "/contacts",
+        "method": "POST",
+        "description": "Create a new contact.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "first_name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "last_name",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "email",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "company",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "owner_id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "contact"
+      },
+      {
+        "name": "Get Contact",
+        "path": "/contacts/<id>",
+        "method": "GET",
+        "description": "Retrieve a single contact by id.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "item",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "contact"
+      },
+      {
+        "name": "List Payment",
+        "path": "/payments",
+        "method": "GET",
+        "description": "List all payments.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "items",
+              "type": "array",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "payment"
+      },
+      {
+        "name": "Create Payment",
+        "path": "/payments",
+        "method": "POST",
+        "description": "Create a new payment.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "user_id",
+              "type": "integer",
+              "required": true
+            },
+            {
+              "name": "plan_id",
+              "type": "integer",
+              "required": true
+            },
+            {
+              "name": "amount_cents",
+              "type": "integer",
+              "required": true
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "payment"
+      },
+      {
+        "name": "Get Payment",
+        "path": "/payments/<id>",
+        "method": "GET",
+        "description": "Retrieve a single payment by id.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "item",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "payment"
+      },
+      {
+        "name": "List Plan",
+        "path": "/plans",
+        "method": "GET",
+        "description": "List all plans.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "items",
+              "type": "array",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "plan"
+      },
+      {
+        "name": "Create Plan",
+        "path": "/plans",
+        "method": "POST",
+        "description": "Create a new plan.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "price_cents",
+              "type": "integer",
+              "required": true
+            },
+            {
+              "name": "features",
+              "type": "string",
+              "required": false
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "plan"
+      },
+      {
+        "name": "Get Plan",
+        "path": "/plans/<id>",
+        "method": "GET",
+        "description": "Retrieve a single plan by id.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "item",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "plan"
+      },
+      {
+        "name": "List User",
+        "path": "/users",
+        "method": "GET",
+        "description": "List all users.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "items",
+              "type": "array",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "user"
+      },
+      {
+        "name": "Create User",
+        "path": "/users",
+        "method": "POST",
+        "description": "Create a new user.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "email",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "password_hash",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "role",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "string",
+              "required": false
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "user"
+      },
+      {
+        "name": "Get User",
+        "path": "/users/<id>",
+        "method": "GET",
+        "description": "Retrieve a single user by id.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "item",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "user"
+      },
+      {
+        "name": "Login",
+        "path": "/auth/login",
+        "method": "POST",
+        "description": "Authenticate a user and return a session token.",
+        "request_schema": {
+          "fields": [
+            {
+              "name": "email",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "password",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        "response_schema": {
+          "fields": [
+            {
+              "name": "token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "role",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": false,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "user"
+      },
+      {
+        "name": "Analytics Summary",
+        "path": "/analytics/summary",
+        "method": "GET",
+        "description": "Get aggregated analytics metrics.",
+        "request_schema": null,
+        "response_schema": {
+          "fields": [
+            {
+              "name": "report",
+              "type": "object",
+              "required": true
+            }
+          ]
+        },
+        "auth_required": true,
+        "roles_allowed": [
+          "admin"
+        ],
+        "linked_entity": "analytics"
+      }
+    ]
+  },
+  "db": {
+    "tables": [
+      {
+        "name": "analytics",
+        "columns": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "default": null
+          }
+        ],
+        "primary_key": "id"
+      },
+      {
+        "name": "contact",
+        "columns": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "required": false,
+            "default": null
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "company",
+            "type": "string",
+            "required": false,
+            "default": null
+          },
+          {
+            "name": "owner_id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          }
+        ],
+        "primary_key": "id"
+      },
+      {
+        "name": "payment",
+        "columns": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "plan_id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "amount_cents",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "default": null
+          }
+        ],
+        "primary_key": "id"
+      },
+      {
+        "name": "plan",
+        "columns": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "price_cents",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "features",
+            "type": "string",
+            "required": false,
+            "default": null
+          }
+        ],
+        "primary_key": "id"
+      },
+      {
+        "name": "user",
+        "columns": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "password_hash",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "required": true,
+            "default": null
+          },
+          {
+            "name": "plan",
+            "type": "string",
+            "required": false,
+            "default": null
+          }
+        ],
+        "primary_key": "id"
+      }
+    ],
+    "relations": [
+      {
+        "source_table": "contact",
+        "source_column": "owner_id",
+        "target_table": "user",
+        "target_column": "id",
+        "relation_type": "one-to-many"
+      },
+      {
+        "source_table": "payment",
+        "source_column": "user_id",
+        "target_table": "user",
+        "target_column": "id",
+        "relation_type": "one-to-many"
+      },
+      {
+        "source_table": "payment",
+        "source_column": "plan_id",
+        "target_table": "plan",
+        "target_column": "id",
+        "relation_type": "one-to-many"
+      }
+    ]
+  },
+  "auth": {
+    "roles": [
+      "admin"
+    ],
+    "permissions": [
+      {
+        "role": "admin",
+        "actions": [
+          "read",
+          "write",
+          "update"
+        ],
+        "resources": [
+          "analyticss",
+          "contacts",
+          "payments",
+          "plans",
+          "users"
+        ]
+      }
+    ],
+    "rules": {
+      "premium_gate": {
+        "required_plan": "premium",
+        "message": "Premium plan required for this feature."
+      },
+      "analytics_only": {
+        "roles": [
+          "admin"
+        ],
+        "message": "Analytics access restricted to admins."
+      }
+    }
+  },
+  "logic": [
+    {
+      "name": "premium gating",
+      "rule_type": "access_control",
+      "description": "Protect premium features behind a paid plan.",
+      "details": {
+        "required_plan": "premium"
+      }
+    },
+    {
+      "name": "analytics admin only",
+      "rule_type": "authorization",
+      "description": "Allow only admin users to request analytics data.",
+      "details": {
+        "allowed_roles": [
+          "admin"
+        ]
+      }
+    }
+  ]
+}

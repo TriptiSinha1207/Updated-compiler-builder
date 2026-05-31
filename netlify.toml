@@ -1,0 +1,6 @@
+[build]
+  command = "pip install -r requirements.txt && python scripts/export_static.py"
+  publish = "dist"
+
+[dev]
+  command = "python -m http.server 9000 -d dist"
