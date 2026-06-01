@@ -8,6 +8,7 @@ from typing import Any, Dict
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
+os.chdir(ROOT_DIR)
 
 from flask import Flask, Response, jsonify, request, stream_with_context
 
