@@ -1,6 +1,13 @@
 from __future__ import annotations
+import os
+import sys
 import time
 from typing import Any, Dict
+
+# Ensure the repository root is on Python path so local packages like pipeline can be imported.
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
 from flask import Flask, Response, jsonify, request, stream_with_context
 
