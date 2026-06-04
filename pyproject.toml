@@ -16,3 +16,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["pipeline"]
+
+[tool.setuptools.package-data]
+pipeline = ["*.json"]

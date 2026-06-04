@@ -1,20 +1,26 @@
 from __future__ import annotations
+import json
 import os
 import sys
 import time
 from typing import Any, Dict
 
-# Ensure the repository root is on Python path so local packages like pipeline can be imported.
+# Ensure repo root is on Python path for local package imports (Railway safety measure)
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
-os.chdir(ROOT_DIR)
 
 from flask import Flask, Response, jsonify, request, stream_with_context
 
-from pipeline.engine import PipelineEngine
-from pipeline.integration_registry import IntegrationRegistry
-from pipeline.job_store import JobStore
+try:
+    from pipeline.engine import PipelineEngine
+    from pipeline.integration_registry import IntegrationRegistry
+    from pipeline.job_store import JobStore
+except ImportError as e:
+    print(f"ERROR: Failed to import pipeline modules: {e}")
+    print(f"Python path: {sys.path}")
+    print(f"Working directory: {os.getcwd()}")
+    raise
 
 
 def create_app() -> Flask:
